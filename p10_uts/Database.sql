@@ -1,6 +1,6 @@
 /*
 SQLyog Ultimate v11.5 (64 bit)
-MySQL - 5.6.24 : Database - _kampus_java_crud
+MySQL - 5.6.24 : Database - _kampus_java_crud_simple
 *********************************************************************
 */
 
@@ -29,6 +29,8 @@ CREATE TABLE `ommu_core_zone_city` (
   CONSTRAINT `ommu_core_zone_city_ibfk_1` FOREIGN KEY (`province_id`) REFERENCES `ommu_core_zone_province` (`province_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=533 DEFAULT CHARSET=utf8;
 
+/*Data for the table `ommu_core_zone_city` */
+
 /*Table structure for table `ommu_core_zone_districts` */
 
 DROP TABLE IF EXISTS `ommu_core_zone_districts`;
@@ -46,6 +48,8 @@ CREATE TABLE `ommu_core_zone_districts` (
   CONSTRAINT `ommu_core_zone_districts_ibfk_1` FOREIGN KEY (`city_id`) REFERENCES `ommu_core_zone_city` (`city_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=6880 DEFAULT CHARSET=utf8;
 
+/*Data for the table `ommu_core_zone_districts` */
+
 /*Table structure for table `ommu_core_zone_province` */
 
 DROP TABLE IF EXISTS `ommu_core_zone_province`;
@@ -59,6 +63,8 @@ CREATE TABLE `ommu_core_zone_province` (
   `modified_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT 'trigger',
   PRIMARY KEY (`province_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8;
+
+/*Data for the table `ommu_core_zone_province` */
 
 /*Table structure for table `ommu_core_zone_village` */
 
@@ -78,13 +84,15 @@ CREATE TABLE `ommu_core_zone_village` (
   CONSTRAINT `ommu_core_zone_village_ibfk_1` FOREIGN KEY (`district_id`) REFERENCES `ommu_core_zone_districts` (`district_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8;
 
+/*Data for the table `ommu_core_zone_village` */
+
 /* Trigger structure for table `ommu_core_zone_city` */
 
 DELIMITER $$
 
 /*!50003 DROP TRIGGER*//*!50032 IF EXISTS */ /*!50003 `coreBeforeInsertCity` */$$
 
-/*!50003 CREATE */ /*!50017 DEFINER = 'root'@'localhost' */ /*!50003 TRIGGER `coreBeforeInsertCity` BEFORE INSERT ON `ommu_core_zone_city` FOR EACH ROW BEGIN
+/*!50003 CREATE */ /*!50003 TRIGGER `coreBeforeInsertCity` BEFORE INSERT ON `ommu_core_zone_city` FOR EACH ROW BEGIN
 	DECLARE province_id_tr SMALLINT;
 	
 	/*CALL getOmmuZoneProvinceIdWithCityMfdonline(NEW.mfdonline, province_id_tr);*/
@@ -105,7 +113,7 @@ DELIMITER $$
 
 /*!50003 DROP TRIGGER*//*!50032 IF EXISTS */ /*!50003 `coreBeforeUpdateCity` */$$
 
-/*!50003 CREATE */ /*!50017 DEFINER = 'root'@'localhost' */ /*!50003 TRIGGER `coreBeforeUpdateCity` BEFORE UPDATE ON `ommu_core_zone_city` FOR EACH ROW BEGIN
+/*!50003 CREATE */ /*!50003 TRIGGER `coreBeforeUpdateCity` BEFORE UPDATE ON `ommu_core_zone_city` FOR EACH ROW BEGIN
 	DECLARE province_id_tr SMALLINT;
 	
 	IF (NEW.mfdonline <> OLD.mfdonline) THEN	
@@ -128,7 +136,7 @@ DELIMITER $$
 
 /*!50003 DROP TRIGGER*//*!50032 IF EXISTS */ /*!50003 `coreBeforeInsertDistricts` */$$
 
-/*!50003 CREATE */ /*!50017 DEFINER = 'root'@'localhost' */ /*!50003 TRIGGER `coreBeforeInsertDistricts` BEFORE INSERT ON `ommu_core_zone_districts` FOR EACH ROW BEGIN
+/*!50003 CREATE */ /*!50003 TRIGGER `coreBeforeInsertDistricts` BEFORE INSERT ON `ommu_core_zone_districts` FOR EACH ROW BEGIN
 	DECLARE `city_id_tr` INT;
 	
 	/*CALL getOmmuZoneCityIdWithDistrictMfdonline(NEW.mfdonline, city_id_tr);*/
@@ -149,7 +157,7 @@ DELIMITER $$
 
 /*!50003 DROP TRIGGER*//*!50032 IF EXISTS */ /*!50003 `coreBeforeUpdateDistricts` */$$
 
-/*!50003 CREATE */ /*!50017 DEFINER = 'root'@'localhost' */ /*!50003 TRIGGER `coreBeforeUpdateDistricts` BEFORE UPDATE ON `ommu_core_zone_districts` FOR EACH ROW BEGIN
+/*!50003 CREATE */ /*!50003 TRIGGER `coreBeforeUpdateDistricts` BEFORE UPDATE ON `ommu_core_zone_districts` FOR EACH ROW BEGIN
 	DECLARE `city_id_tr` INT;
 	
 	IF (NEW.mfdonline <> OLD.mfdonline) THEN	
@@ -172,7 +180,7 @@ DELIMITER $$
 
 /*!50003 DROP TRIGGER*//*!50032 IF EXISTS */ /*!50003 `coreBeforeInsertProvince` */$$
 
-/*!50003 CREATE */ /*!50017 DEFINER = 'root'@'localhost' */ /*!50003 TRIGGER `coreBeforeInsertProvince` BEFORE INSERT ON `ommu_core_zone_province` FOR EACH ROW BEGIN
+/*!50003 CREATE */ /*!50003 TRIGGER `coreBeforeInsertProvince` BEFORE INSERT ON `ommu_core_zone_province` FOR EACH ROW BEGIN
 	SET NEW.province = TRIM(NEW.province);
     END */$$
 
@@ -185,7 +193,7 @@ DELIMITER $$
 
 /*!50003 DROP TRIGGER*//*!50032 IF EXISTS */ /*!50003 `coreBeforeUpdateProvince` */$$
 
-/*!50003 CREATE */ /*!50017 DEFINER = 'root'@'localhost' */ /*!50003 TRIGGER `coreBeforeUpdateProvince` BEFORE UPDATE ON `ommu_core_zone_province` FOR EACH ROW BEGIN
+/*!50003 CREATE */ /*!50003 TRIGGER `coreBeforeUpdateProvince` BEFORE UPDATE ON `ommu_core_zone_province` FOR EACH ROW BEGIN
 	SET NEW.province = TRIM(NEW.province);
 	SET NEW.modified_date = NOW();
     END */$$
@@ -199,7 +207,7 @@ DELIMITER $$
 
 /*!50003 DROP TRIGGER*//*!50032 IF EXISTS */ /*!50003 `coreBeforeInsertVillage` */$$
 
-/*!50003 CREATE */ /*!50017 DEFINER = 'root'@'localhost' */ /*!50003 TRIGGER `coreBeforeInsertVillage` BEFORE INSERT ON `ommu_core_zone_village` FOR EACH ROW BEGIN
+/*!50003 CREATE */ /*!50003 TRIGGER `coreBeforeInsertVillage` BEFORE INSERT ON `ommu_core_zone_village` FOR EACH ROW BEGIN
 	DECLARE `district_id_tr` INT;
 		
 	/*CALL getOmmuZoneCityIdWithDistrictMfdonline(NEW.mfdonline, city_id_tr);*/
@@ -221,7 +229,7 @@ DELIMITER $$
 
 /*!50003 DROP TRIGGER*//*!50032 IF EXISTS */ /*!50003 `coreBeforeUpdateVillage` */$$
 
-/*!50003 CREATE */ /*!50017 DEFINER = 'root'@'localhost' */ /*!50003 TRIGGER `coreBeforeUpdateVillage` BEFORE UPDATE ON `ommu_core_zone_village` FOR EACH ROW BEGIN
+/*!50003 CREATE */ /*!50003 TRIGGER `coreBeforeUpdateVillage` BEFORE UPDATE ON `ommu_core_zone_village` FOR EACH ROW BEGIN
 	DECLARE `district_id_tr` INT;
 	
 	IF (NEW.mfdonline <> OLD.mfdonline) THEN	
@@ -245,7 +253,7 @@ DELIMITER ;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `getOmmuZoneCityIdWithDistrictMfdonline`(IN `mfdonline_sp` CHAR, OUT `city_id_sp` INT)
+/*!50003 CREATE PROCEDURE `getOmmuZoneCityIdWithDistrictMfdonline`(IN `mfdonline_sp` CHAR, OUT `city_id_sp` INT)
 BEGIN
 	SELECT `city_id` INTO city_id_sp FROM `ommu_core_zone_city` WHERE `mfdonline`=LEFT(mfdonline_sp,4);
     END */$$
@@ -257,7 +265,7 @@ DELIMITER ;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `getOmmuZoneCountryId`(IN `province_id_sp` SMALLINT, OUT `country_id_sp` SMALLINT)
+/*!50003 CREATE PROCEDURE `getOmmuZoneCountryId`(IN `province_id_sp` SMALLINT, OUT `country_id_sp` SMALLINT)
 BEGIN
 	SELECT `country_id` INTO country_id_sp FROM `ommu_core_zone_province` WHERE `province_id`=province_id_sp;
     END */$$
@@ -269,7 +277,7 @@ DELIMITER ;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `getOmmuZoneProvinceId`(in `city_id_sp` INT, OUT `province_id_sp` SMALLINT)
+/*!50003 CREATE PROCEDURE `getOmmuZoneProvinceId`(in `city_id_sp` INT, OUT `province_id_sp` SMALLINT)
 BEGIN
 	SELECT `province_id` INTO province_id_sp FROM `ommu_core_zone_city` WHERE `city_id`=city_id_sp;
     END */$$
@@ -281,7 +289,7 @@ DELIMITER ;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `getOmmuZoneProvinceIdWithCityMfdonline`(IN `mfdonline_sp` CHAR, OUT `province_id_sp` SMALLINT)
+/*!50003 CREATE PROCEDURE `getOmmuZoneProvinceIdWithCityMfdonline`(IN `mfdonline_sp` CHAR, OUT `province_id_sp` SMALLINT)
 BEGIN
 	SELECT `province_id` INTO province_id_sp FROM `ommu_core_zone_province` WHERE `mfdonline`=LEFT(mfdonline_sp,2);
 	/*
@@ -317,19 +325,41 @@ DROP TABLE IF EXISTS `_view_core_zone_districts`;
  `province` varchar(64) 
 )*/;
 
+/*Table structure for table `_view_core_zone_village` */
+
+DROP TABLE IF EXISTS `_view_core_zone_village`;
+
+/*!50001 DROP VIEW IF EXISTS `_view_core_zone_village` */;
+/*!50001 DROP TABLE IF EXISTS `_view_core_zone_village` */;
+
+/*!50001 CREATE TABLE  `_view_core_zone_village`(
+ `village_id` int(11) unsigned ,
+ `village_name` varchar(64) ,
+ `district_name` varchar(64) ,
+ `city` varchar(64) ,
+ `province` varchar(64) 
+)*/;
+
 /*View structure for view _view_core_zone_city */
 
 /*!50001 DROP TABLE IF EXISTS `_view_core_zone_city` */;
 /*!50001 DROP VIEW IF EXISTS `_view_core_zone_city` */;
 
-/*!50001 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `_view_core_zone_city` AS select `a`.`city_id` AS `city_id`,`a`.`city` AS `city`,`b`.`province` AS `province` from (`ommu_core_zone_city` `a` left join `ommu_core_zone_province` `b` on((`a`.`province_id` = `b`.`province_id`))) */;
+/*!50001 CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `_view_core_zone_city` AS select `a`.`city_id` AS `city_id`,`a`.`city` AS `city`,`b`.`province` AS `province` from (`ommu_core_zone_city` `a` left join `ommu_core_zone_province` `b` on((`a`.`province_id` = `b`.`province_id`))) */;
 
 /*View structure for view _view_core_zone_districts */
 
 /*!50001 DROP TABLE IF EXISTS `_view_core_zone_districts` */;
 /*!50001 DROP VIEW IF EXISTS `_view_core_zone_districts` */;
 
-/*!50001 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `_view_core_zone_districts` AS select `a`.`district_id` AS `district_id`,`a`.`district_name` AS `district_name`,`b`.`city` AS `city`,`b`.`province` AS `province` from (`ommu_core_zone_districts` `a` left join `_view_core_zone_city` `b` on((`a`.`city_id` = `b`.`city_id`))) */;
+/*!50001 CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `_view_core_zone_districts` AS select `a`.`district_id` AS `district_id`,`a`.`district_name` AS `district_name`,`b`.`city` AS `city`,`b`.`province` AS `province` from (`ommu_core_zone_districts` `a` left join `_view_core_zone_city` `b` on((`a`.`city_id` = `b`.`city_id`))) */;
+
+/*View structure for view _view_core_zone_village */
+
+/*!50001 DROP TABLE IF EXISTS `_view_core_zone_village` */;
+/*!50001 DROP VIEW IF EXISTS `_view_core_zone_village` */;
+
+/*!50001 CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `_view_core_zone_village` AS select `a`.`village_id` AS `village_id`,`a`.`village_name` AS `village_name`,`b`.`district_name` AS `district_name`,`b`.`city` AS `city`,`b`.`province` AS `province` from (`ommu_core_zone_village` `a` left join `_view_core_zone_districts` `b` on((`a`.`district_id` = `b`.`district_id`))) */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
