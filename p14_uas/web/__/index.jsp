@@ -12,6 +12,6 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <jsp:forward page="/Province?action=manage" />
+        <jsp:forward page="/UserController?action=listuser" />
     </body>
 </html>

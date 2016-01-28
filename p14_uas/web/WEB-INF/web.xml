@@ -8,13 +8,13 @@
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
     <servlet>
-        <servlet-name>UserController</servlet-name>
-        <servlet-class>controller.UserController</servlet-class>
+        <servlet-name>Province</servlet-name>
+        <servlet-class>controller.Province</servlet-class>
         <load-on-startup>2</load-on-startup>
     </servlet>
     <servlet-mapping>
-        <servlet-name>UserController</servlet-name>
-        <url-pattern>/UserController</url-pattern>
+        <servlet-name>Province</servlet-name>
+        <url-pattern>/Province</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

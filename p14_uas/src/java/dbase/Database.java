@@ -17,6 +17,7 @@ public class Database {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con;
+            //con = DriverManager.getConnection("jdbc:mysql://localhost:3306/_kampus_java_crud","root","root");
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/_kampus_java_crud_simple","root","root");
             return con;
         } catch(Exception ex) {
