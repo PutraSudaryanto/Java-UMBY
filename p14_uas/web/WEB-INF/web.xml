@@ -8,13 +8,44 @@
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
     <servlet>
+        <servlet-name>Site</servlet-name>
+        <servlet-class>controller.Site</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Site</servlet-name>
+        <url-pattern>/Site</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>Province</servlet-name>
         <servlet-class>controller.Province</servlet-class>
-        <load-on-startup>2</load-on-startup>
     </servlet>
     <servlet-mapping>
         <servlet-name>Province</servlet-name>
         <url-pattern>/Province</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>City</servlet-name>
+        <servlet-class>controller.City</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>City</servlet-name>
+        <url-pattern>/City</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>District</servlet-name>
+        <servlet-class>controller.District</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>District</servlet-name>
+        <url-pattern>/District</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>Village</servlet-name>
+        <servlet-class>controller.Village</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Village</servlet-name>
+        <url-pattern>/Village</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

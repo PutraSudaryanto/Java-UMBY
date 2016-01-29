@@ -12,7 +12,7 @@ import java.util.Date;
  * @author Putra Sudaryanto
  */
 public class DistrictModel {
-    String districtId, publish, cityId, districtName, mfdonline;
+    String districtId, publish, cityId, district, mfdonline;
     Date creationDate, modifiedDate;
     
     public String getDistrictId() {
@@ -37,10 +37,10 @@ public class DistrictModel {
     }
     
     public String getDistrict() {
-        return districtName;
+        return district;
     }
     public void setDistrict(String district_name) {
-        this.districtName = district_name;
+        this.district = district_name;
     }
     
     public String getMfdonline() {

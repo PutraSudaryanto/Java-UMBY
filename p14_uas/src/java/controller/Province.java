@@ -52,8 +52,12 @@ public class Province extends HttpServlet {
             forward = MANAGE;
             request.setAttribute("model", o.findAll());
             
+        } else if (action.equalsIgnoreCase("add")) {
+            forward = INSERT_OR_EDIT;            
+            
         } else {
-            forward = INSERT_OR_EDIT;
+            forward = MANAGE;
+            request.setAttribute("model", o.findAll());
         }
         RequestDispatcher view = request.getRequestDispatcher(forward);
         view.forward(request, response);

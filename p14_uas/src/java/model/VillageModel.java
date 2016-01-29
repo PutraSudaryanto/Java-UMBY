@@ -12,7 +12,7 @@ import java.util.Date;
  * @author Putra Sudaryanto
  */
 public class VillageModel {
-    String villageId, publish, districtId, villageName, zipcode, mfdonline;
+    String villageId, publish, districtId, village, zipcode, mfdonline;
     Date creationDate, modifiedDate;
     
     public String getVillageId() {
@@ -37,10 +37,10 @@ public class VillageModel {
     }
     
     public String getVillage() {
-        return villageName;
+        return village;
     }
     public void setVillage(String village_name) {
-        this.villageName = village_name;
+        this.village = village_name;
     }
     
     public String getZipcode() {
